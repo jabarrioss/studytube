@@ -1,0 +1,50 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TopicController;
+use App\Http\Controllers\NoteController;
+use App\Http\Controllers\PremiumController;
+use App\Http\Controllers\ShopifyWebhookController;
+use App\Http\Controllers\Auth\GoogleAuthController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Google OAuth Routes
+Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
+
+// Shopify Webhook (no auth middleware)
+Route::post('/webhooks/shopify', [ShopifyWebhookController::class, 'handle'])->name('shopify.webhook');
+
+// Authenticated Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return redirect()->route('topics.index');
+    })->name('dashboard');
+
+    // Topics Management
+    Route::get('/topics', [TopicController::class, 'index'])->name('topics.index');
+    Route::get('/topics/create', [TopicController::class, 'create'])->name('topics.create');
+    Route::post('/topics', [TopicController::class, 'store'])->name('topics.store');
+    Route::get('/topics/{topic}', [TopicController::class, 'show'])->name('topics.show');
+    Route::post('/topics/{topic}/toggle', [TopicController::class, 'toggleComplete'])->name('topics.toggle');
+    Route::delete('/topics/{topic}', [TopicController::class, 'destroy'])->name('topics.destroy');
+
+    // Notes Management
+    Route::post('/topics/{topic}/notes', [NoteController::class, 'store'])->name('notes.store');
+    Route::put('/topics/{topic}/notes/{note}', [NoteController::class, 'update'])->name('notes.update');
+    Route::delete('/topics/{topic}/notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
+
+    // Premium Subscription
+    Route::get('/premium', [PremiumController::class, 'index'])->name('premium.index');
+
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

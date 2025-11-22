@@ -24,7 +24,6 @@ class PremiumController extends Controller
 
         $variantId = env('SHOPIFY_PREMIUM_VARIANT_ID', 'VARIANT_ID');
         $checkoutUrl = $this->shopifyService->generateCartPermalink($user->uuid, $variantId);
-
         return view('premium.index', compact('checkoutUrl'));
     }
 }

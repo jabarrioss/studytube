@@ -23,65 +23,62 @@
                 </div>
             @endif
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6" x-data="videoPlayerComponent('{{ $topic->youtube_id }}')">
                 <!-- Video Player Column -->
                 <div class="lg:col-span-2">
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-xl border border-gray-200 dark:border-gray-700">
-                        <!-- Alpine.js Video Player Component -->
-                        <div x-data="videoPlayer('{{ $topic->youtube_id }}')" x-init="initPlayer()">
-                            <!-- YouTube Player Container -->
-                            <div id="youtube-player" class="w-full aspect-video bg-black"></div>
+                        <!-- YouTube Player Container -->
+                        <div id="youtube-player" class="w-full aspect-video bg-black"></div>
 
-                            <!-- Video Controls Info -->
-                            <div class="p-4 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border-t border-gray-200 dark:border-gray-700">
-                                <div class="flex items-center justify-between text-sm">
-                                    <div class="flex items-center space-x-2">
-                                        <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <!-- Video Controls Info -->
+                        <div class="p-4 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border-t border-gray-200 dark:border-gray-700">
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-gray-700 dark:text-gray-300">Current: <span x-text="formatTime(currentTime)" class="font-mono font-semibold text-indigo-600 dark:text-indigo-400"></span></span>
+                                </div>
+                                <span class="text-gray-700 dark:text-gray-300">Duration: <span x-text="formatTime(duration)" class="font-mono font-semibold"></span></span>
+                            </div>
+                        </div>
+
+                        <!-- Add Note Form -->
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
+                            <div class="flex items-center mb-4">
+                                <div class="flex-shrink-0 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg p-2">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="ml-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Add Note at Current Time</h3>
+                            </div>
+                            <form method="POST" action="{{ route('notes.store', $topic) }}">
+                                @csrf
+                                <input type="hidden" name="timestamp_seconds" x-model="currentTime">
+                                <div class="mb-4">
+                                    <textarea 
+                                        name="content" 
+                                        rows="4" 
+                                        class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-indigo-500 dark:focus:ring-indigo-400 rounded-lg shadow-sm transition"
+                                        placeholder="Write your note here... (supports markdown)"
+                                        required></textarea>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                                        <svg class="w-4 h-4 mr-1 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                         </svg>
-                                        <span class="text-gray-700 dark:text-gray-300">Current: <span x-text="formatTime(currentTime)" class="font-mono font-semibold text-indigo-600 dark:text-indigo-400"></span></span>
+                                        <span>Note will be saved at <span x-text="formatTime(currentTime)" class="font-mono font-semibold text-indigo-600 dark:text-indigo-400"></span></span>
                                     </div>
-                                    <span class="text-gray-700 dark:text-gray-300">Duration: <span x-text="formatTime(duration)" class="font-mono font-semibold"></span></span>
-                                </div>
-                            </div>
-
-                            <!-- Add Note Form -->
-                            <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                                <div class="flex items-center mb-4">
-                                    <div class="flex-shrink-0 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg p-2">
-                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                    <button type="submit" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 border border-transparent rounded-lg font-semibold text-sm text-white hover:from-indigo-700 hover:to-purple-700 transition shadow-md hover:shadow-lg">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                         </svg>
-                                    </div>
-                                    <h3 class="ml-3 text-lg font-semibold text-gray-900 dark:text-gray-100">Add Note at Current Time</h3>
+                                        Add Note
+                                    </button>
                                 </div>
-                                <form method="POST" action="{{ route('notes.store', $topic) }}" @submit="submitNote($event)">
-                                    @csrf
-                                    <input type="hidden" name="timestamp_seconds" x-model="currentTime">
-                                    <div class="mb-4">
-                                        <textarea 
-                                            name="content" 
-                                            rows="4" 
-                                            class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-indigo-500 dark:focus:ring-indigo-400 rounded-lg shadow-sm transition"
-                                            placeholder="Write your note here... (supports markdown)"
-                                            required></textarea>
-                                    </div>
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                                            <svg class="w-4 h-4 mr-1 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                            </svg>
-                                            <span>Note will be saved at <span x-text="formatTime(currentTime)" class="font-mono font-semibold text-indigo-600 dark:text-indigo-400"></span></span>
-                                        </div>
-                                        <button type="submit" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 border border-transparent rounded-lg font-semibold text-sm text-white hover:from-indigo-700 hover:to-purple-700 transition shadow-md hover:shadow-lg">
-                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                                            </svg>
-                                            Add Note
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -116,8 +113,7 @@
                             @else
                                 <div class="space-y-3 max-h-[600px] overflow-y-auto">
                                     @foreach($topic->notes->sortBy('timestamp_seconds') as $note)
-                                        <div class="border-l-4 border-indigo-500 dark:border-indigo-400 pl-4 py-3 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition rounded-r-lg group" 
-                                             x-data="videoPlayer('{{ $topic->youtube_id }}')">
+                                        <div class="border-l-4 border-indigo-500 dark:border-indigo-400 pl-4 py-3 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition rounded-r-lg group">
                                             <!-- Timestamp Button -->
                                             <button @click="seekTo({{ $note->timestamp_seconds }})" 
                                                     class="flex items-center text-xs font-mono font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 mb-2 transition">
@@ -158,11 +154,16 @@
     @push('scripts')
     <script>
         document.addEventListener('alpine:init', () => {
-            Alpine.data('videoPlayer', (youtubeId) => ({
+            Alpine.data('videoPlayerComponent', (youtubeId) => ({
                 player: null,
                 currentTime: 0,
                 duration: 0,
                 youtubeId: youtubeId,
+
+                init() {
+                    // Initialize player when component mounts
+                    this.initPlayer();
+                },
 
                 initPlayer() {
                     // Wait for YouTube API to be ready
@@ -211,10 +212,6 @@
                         return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
                     }
                     return `${m}:${s.toString().padStart(2, '0')}`;
-                },
-
-                submitNote(event) {
-                    // Form will submit naturally, no need to prevent default
                 }
             }));
         });

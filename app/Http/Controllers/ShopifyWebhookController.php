@@ -23,7 +23,11 @@ class ShopifyWebhookController extends Controller
         $hmacHeader = $request->header('X-Shopify-Hmac-Sha256');
 
         if (!$this->shopifyService->verifyWebhook($data, $hmacHeader)) {
-            Log::warning('Invalid Shopify webhook signature');
+            Log::warning('Invalid Shopify webhook signature', [
+                'hmac_header' => $hmacHeader,
+                'data_length' => strlen($data),
+                'data_preview' => substr($data, 0, 200)
+            ]);
             return response()->json(['error' => 'Invalid signature'], 401);
         }
 

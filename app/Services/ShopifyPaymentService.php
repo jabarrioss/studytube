@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\PaymentProvider;
+use Illuminate\Support\Facades\Log;
 
 class ShopifyPaymentService
 {
@@ -20,6 +21,10 @@ class ShopifyPaymentService
             $config = $provider->config_json;
             $this->shopifyDomain = $config['domain'] ?? env('SHOPIFY_DOMAIN');
             $this->storefrontAccessToken = $config['storefront_access_token'] ?? env('SHOPIFY_STOREFRONT_TOKEN');
+        } else {
+            // Fallback to environment variables
+            $this->shopifyDomain = env('SHOPIFY_DOMAIN');
+            $this->storefrontAccessToken = env('SHOPIFY_STOREFRONT_TOKEN');
         }
     }
 
@@ -48,13 +53,20 @@ class ShopifyPaymentService
             ->where('is_active', true)
             ->first();
 
-        if (!$provider) {
+        $webhookSecret = $provider?->config_json['webhook_secret'] ?? env('SHOPIFY_WEBHOOK_SECRET');
+        
+        if (!$webhookSecret) {
+            Log::error('Shopify webhook secret not configured');
             return false;
         }
-
-        $webhookSecret = $provider->config_json['webhook_secret'] ?? env('SHOPIFY_WEBHOOK_SECRET');
         
         $calculatedHmac = base64_encode(hash_hmac('sha256', $data, $webhookSecret, true));
+        
+        Log::info('Webhook verification', [
+            'calculated' => $calculatedHmac,
+            'received' => $hmacHeader,
+            'match' => hash_equals($calculatedHmac, $hmacHeader)
+        ]);
         
         return hash_equals($calculatedHmac, $hmacHeader);
     }

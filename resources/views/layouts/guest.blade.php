@@ -14,22 +14,23 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+    <body class="font-sans text-gray-900 dark:text-gray-100 antialiased">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
             <div class="mb-8">
-                <a href="/" class="flex items-center">
+                <a href="/" class="flex items-center space-x-2">
+                    <span class="text-3xl">📚</span>
                     <div class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-                        📚 StudyTube
+                        StudyTube
                     </div>
                 </a>
-                <p class="text-center text-sm text-gray-500 mt-2">Take timestamped notes on YouTube videos</p>
+                <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">Take timestamped notes on YouTube videos</p>
             </div>
 
-            <div class="w-full sm:max-w-md px-6 py-8 bg-white shadow-xl overflow-hidden sm:rounded-xl">
+            <div class="w-full sm:max-w-md px-6 py-8 bg-white dark:bg-gray-800 shadow-xl overflow-hidden sm:rounded-xl border border-gray-200 dark:border-gray-700">
                 {{ $slot }}
             </div>
 
-            <div class="mt-8 text-center text-sm text-gray-500">
+            <div class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
                 <p>&copy; {{ date('Y') }} StudyTube. Made with ❤️ for learners.</p>
             </div>
         </div>

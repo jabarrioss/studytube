@@ -28,8 +28,8 @@ class CreateTenantDatabase
         $user = $event->user;
         $userUuid = $user->uuid;
 
-        // Define tenant database path
-        $tenantDbPath = database_path("tenants/user_{$userUuid}.sqlite");
+        // Define tenant database path with proper directory separators
+        $tenantDbPath = database_path("tenants" . DIRECTORY_SEPARATOR . "user_{$userUuid}.sqlite");
 
         // Create the database file if it doesn't exist
         if (!File::exists($tenantDbPath)) {

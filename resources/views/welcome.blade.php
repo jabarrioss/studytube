@@ -4,11 +4,307 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <!-- SEO Meta Tags -->
+        <title>StudyTube - Learn Smarter with Timestamped YouTube Notes | Free Learning Platform</title>
+        <meta name="description" content="Transform how you learn from YouTube videos. Take timestamped notes, jump to any moment instantly, and organize your learning journey. Free for students and lifelong learners.">
+        <meta name="keywords" content="YouTube notes, timestamped notes, video learning, study tool, education platform, note taking, online learning, study app">
+        <meta name="author" content="StudyTube">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url('/') }}">
+        <meta property="og:title" content="StudyTube - Learn Smarter with Timestamped YouTube Notes">
+        <meta property="og:description" content="Transform how you learn from YouTube videos. Take timestamped notes and jump to any moment instantly.">
+        <meta property="og:image" content="{{ asset('images/og-image.png') }}">
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="{{ url('/') }}">
+        <meta property="twitter:title" content="StudyTube - Learn Smarter with Timestamped YouTube Notes">
+        <meta property="twitter:description" content="Transform how you learn from YouTube videos. Take timestamped notes and jump to any moment instantly.">
+        <meta property="twitter:image" content="{{ asset('images/og-image.png') }}">
+
+        <!-- Canonical URL -->
+        <link rel="canonical" href="{{ url('/') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap" rel="stylesheet" />
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Schema.org structured data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "StudyTube",
+            "description": "Learn smarter with timestamped YouTube notes",
+            "url": "{{ url('/') }}",
+            "applicationCategory": "EducationalApplication",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "featureList": "Timestamped notes, YouTube integration, Video bookmarking, Note organization"
+        }
+        </script>
+    </head>
+    <body class="font-sans antialiased bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+        <!-- Navigation -->
+        <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center">
+                        <a href="/" class="flex items-center space-x-2">
+                            <span class="text-3xl">📚</span>
+                            <span class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">StudyTube</span>
+                        </a>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="text-gray-700 hover:text-indigo-600 font-medium transition">Dashboard</a>
+                            <a href="{{ route('topics.index') }}" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium">My Topics</a>
+                        @else
+                            <a href="{{ route('login') }}" class="text-gray-700 hover:text-indigo-600 font-medium transition">Sign In</a>
+                            <a href="{{ route('register') }}" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium">Get Started Free</a>
+                        @endauth
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden py-20 lg:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-5xl lg:text-7xl font-bold text-gray-900 mb-6">
+                        Learn Smarter from
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">YouTube Videos</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                        Take timestamped notes while watching. Click any timestamp to jump back instantly. Never lose track of important moments again.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="{{ route('register') }}" class="px-8 py-4 bg-indigo-600 text-white text-lg font-semibold rounded-lg hover:bg-indigo-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            Start Learning Free →
+                        </a>
+                        <a href="#how-it-works" class="px-8 py-4 bg-white text-indigo-600 text-lg font-semibold rounded-lg border-2 border-indigo-600 hover:bg-indigo-50 transition">
+                            See How It Works
+                        </a>
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500">✨ No credit card required • Free forever plan available</p>
+                </div>
+
+                <!-- Hero Image / Demo -->
+                <div class="mt-16 relative">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 border border-gray-200">
+                        <div class="aspect-video bg-gradient-to-br from-indigo-100 to-purple-100 rounded-lg flex items-center justify-center">
+                            <div class="text-center">
+                                <svg class="w-24 h-24 mx-auto text-indigo-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <p class="text-gray-600 font-medium">Your YouTube videos with timestamped notes appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="how-it-works" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">How StudyTube Works</h2>
+                    <p class="text-xl text-gray-600">Simple, powerful, and built for learners</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-12">
+                    <!-- Step 1 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">1</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">📎 Paste YouTube URL</h3>
+                        <p class="text-gray-600">Copy any YouTube video link and paste it into StudyTube. We'll automatically fetch the video details.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">2</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">✍️ Take Timestamped Notes</h3>
+                        <p class="text-gray-600">Watch the video and jot down notes. Each note captures the exact timestamp automatically.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-pink-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6">3</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">⏱️ Jump to Any Moment</h3>
+                        <p class="text-gray-600">Click any timestamp in your notes to instantly seek to that exact moment in the video.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Everything You Need to Learn Better</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Timestamps</h3>
+                        <p class="text-gray-600">Automatically capture the exact video moment when you take notes. No manual timestamp entry needed.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🔒</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Private & Secure</h3>
+                        <p class="text-gray-600">Your notes are stored in your own private database. Only you can access your learning materials.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🚀</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Lightning Fast</h3>
+                        <p class="text-gray-600">Built with modern technology for instant video seeking and real-time note synchronization.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">📚</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Organize Topics</h3>
+                        <p class="text-gray-600">Group your videos by subjects, courses, or projects. Keep all your learning organized in one place.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🔍</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Search Your Notes</h3>
+                        <p class="text-gray-600">Quickly find any note across all your videos. Never lose important information again.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">💎</div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Premium Features</h3>
+                        <p class="text-gray-600">Upgrade for advanced analytics, unlimited storage, and priority support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Perfect For Every Learner</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">👨‍🎓 Students</h3>
+                        <p class="text-gray-700 mb-4">Take notes on educational videos, online courses, and tutorials. Review material efficiently with timestamped references.</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Capture lecture highlights</li>
+                            <li>✓ Study for exams with quick review</li>
+                            <li>✓ Annotate course materials</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">💼 Professionals</h3>
+                        <p class="text-gray-700 mb-4">Learn new skills, follow industry tutorials, and stay updated with conference talks and webinars.</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Track professional development</li>
+                            <li>✓ Document best practices</li>
+                            <li>✓ Reference technical tutorials</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">🎨 Creators</h3>
+                        <p class="text-gray-700 mb-4">Research content ideas, analyze competitor videos, and collect inspiration with organized notes.</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Save creative inspiration</li>
+                            <li>✓ Analyze video techniques</li>
+                            <li>✓ Plan content strategies</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">🧠 Lifelong Learners</h3>
+                        <p class="text-gray-700 mb-4">Explore topics you're passionate about. Build a personal knowledge base from YouTube's endless library.</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>✓ Pursue hobbies and interests</li>
+                            <li>✓ Build comprehensive knowledge</li>
+                            <li>✓ Never stop growing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Transform Your Learning?</h2>
+                <p class="text-xl text-indigo-100 mb-8">Join thousands of learners who are studying smarter with StudyTube</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{{ route('register') }}" class="px-8 py-4 bg-white text-indigo-600 text-lg font-semibold rounded-lg hover:bg-gray-100 transition shadow-lg">
+                        Create Free Account →
+                    </a>
+                    <a href="{{ route('login') }}" class="px-8 py-4 bg-indigo-700 text-white text-lg font-semibold rounded-lg hover:bg-indigo-800 transition border-2 border-white">
+                        Sign In
+                    </a>
+                </div>
+                <p class="mt-6 text-indigo-100 text-sm">💯 Free forever • 🚫 No credit card required • ⚡ Start in 30 seconds</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-gray-300 py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-4 gap-8 mb-8">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="text-2xl">📚</span>
+                            <span class="text-xl font-bold text-white">StudyTube</span>
+                        </div>
+                        <p class="text-sm">Learn smarter with timestamped YouTube notes.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Product</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
+                            <li><a href="{{ route('premium.index') }}" class="hover:text-white transition">Pricing</a></li>
+                            <li><a href="#" class="hover:text-white transition">Features</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Company</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                            <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                            <li><a href="#" class="hover:text-white transition">Support</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-white mb-4">Legal</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                    <p>&copy; {{ date('Y') }} StudyTube. Made with ❤️ for learners worldwide.</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
 
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))

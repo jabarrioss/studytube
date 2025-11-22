@@ -74,4 +74,20 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Plan::class);
     }
+
+    /**
+     * Get topics count from tenant database
+     */
+    public function topics()
+    {
+        return \App\Models\Tenant\Topic::on('tenant');
+    }
+
+    /**
+     * Get notes count from tenant database
+     */
+    public function notes()
+    {
+        return \App\Models\Tenant\Note::on('tenant');
+    }
 }

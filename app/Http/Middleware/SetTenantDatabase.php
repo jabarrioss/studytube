@@ -21,8 +21,8 @@ class SetTenantDatabase
         if ($request->user()) {
             $userUuid = $request->user()->uuid;
             
-            // Set the tenant database path
-            $tenantDbPath = database_path("tenants/user_{$userUuid}.sqlite");
+            // Set the tenant database path with proper directory separators
+            $tenantDbPath = database_path("tenants" . DIRECTORY_SEPARATOR . "user_{$userUuid}.sqlite");
             
             // Update the tenant connection configuration
             Config::set('database.connections.tenant.database', $tenantDbPath);

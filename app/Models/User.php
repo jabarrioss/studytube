@@ -90,4 +90,19 @@ class User extends Authenticatable
     {
         return \App\Models\Tenant\Note::on('tenant');
     }
+
+    /**
+     * Check if the user is subscribed to a specific plan.
+     *
+     * @param string $planName
+     * @return bool
+     */
+    public function subscribed(string $planName): bool
+    {
+        if (!$this->plan) {
+            return false;
+        }
+
+        return strtolower($this->plan->name) === strtolower($planName);
+    }
 }

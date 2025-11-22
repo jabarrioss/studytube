@@ -30,6 +30,27 @@
                         <!-- YouTube Player Container -->
                         <div id="youtube-player" class="w-full aspect-video bg-black"></div>
 
+                        <!-- Ad Placeholder for Free Plan Users -->
+                        @if(!Auth::user()->subscribed('premium'))
+                            <div class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 border-y border-gray-300 dark:border-gray-600">
+                                <div class="p-6 text-center">
+                                    <div class="flex items-center justify-center mb-3">
+                                        <svg class="w-6 h-6 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                        </svg>
+                                        <span class="text-sm font-semibold text-gray-600 dark:text-gray-300">Ad Space</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Advertisement placeholder for free plan users</p>
+                                    <a href="{{ route('premium.index') }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold rounded-lg hover:from-indigo-700 hover:to-purple-700 transition shadow-md">
+                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        Remove ads with Premium
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+
                         <!-- Video Controls Info -->
                         <div class="p-4 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 border-t border-gray-200 dark:border-gray-700">
                             <div class="flex items-center justify-between text-sm">

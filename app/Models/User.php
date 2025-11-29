@@ -105,4 +105,20 @@ class User extends Authenticatable
 
         return strtolower($this->plan->name) === strtolower($planName);
     }
+
+    /**
+     * Check if the user is admin.
+     */
+    public function isAdmin(): bool
+    {
+        return $this->is_admin;
+    }
+
+    /**
+     * Check if the user Is Pana.
+     */
+    public function isPana(): bool
+    {
+        return $this->is_pana;
+    }
 }

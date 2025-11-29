@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tenant\Topic;
 use App\Services\YouTubeMetadataService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TopicController extends Controller
 {
@@ -29,6 +30,17 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         $request->validate(['youtube_url' => 'required|url']);
+
+        // Check topic limit for free users (not admin, not pana, not premium)
+        $user = Auth::user();
+        if (!$user->isAdmin() && !$user->isPana() && !$user->subscribed('premium')) {
+            $topicCount = Topic::count();
+            if ($topicCount >= 5) {
+                return back()->withErrors([
+                    'youtube_url' => 'You have reached the maximum of 5 topics. Upgrade to Premium to create unlimited topics.'
+                ])->withInput();
+            }
+        }
 
         $videoId = $this->youtubeService->extractVideoId($request->youtube_url);
         if (!$videoId) {

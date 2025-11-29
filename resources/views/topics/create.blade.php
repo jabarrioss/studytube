@@ -22,6 +22,20 @@
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Add a YouTube Video</h3>
                         <p class="text-gray-600 dark:text-gray-400">Start your learning journey by adding any YouTube video</p>
+                        @if(!Auth::user()->isAdmin() && !Auth::user()->isPana() && !Auth::user()->subscribed('premium'))
+                            @php
+                                $topicCount = \App\Models\Tenant\Topic::count();
+                            @endphp
+                            <div class="mt-4 inline-flex items-center px-4 py-2 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+                                <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-sm text-yellow-700 dark:text-yellow-300">
+                                    <strong>Free Plan:</strong> {{ $topicCount }}/5 topics used. 
+                                    <a href="{{ route('premium.index') }}" class="underline hover:text-yellow-900 dark:hover:text-yellow-100">Upgrade to Premium</a> for unlimited topics.
+                                </span>
+                            </div>
+                        @endif
                     </div>
 
                     <form method="POST" action="{{ route('topics.store') }}" class="space-y-6">

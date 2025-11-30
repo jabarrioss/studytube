@@ -1,0 +1,84 @@
+<div class="page-container">
+  <h1>Sign up now</h1>
+  <div class="grid">
+    <div>
+      <h3><code>Paddle.Checkout.open()</code></h3>
+      <a href="#" onclick="openCheckout(itemsList)"><b>Sign up now</b></a>
+    </div>
+    <div>
+      <h3>HTML data attributes</h3>
+      <table>
+        <tr>
+          <td><code>data-theme="light"</code></td>
+          <td>
+            <a class="paddle_button" data-theme="light" data-items='[{"priceId": "pri_01gsz8ntc6z7npqqp6j4ys0w1w","quantity": 5},{"priceId": "pri_01h1vjfevh5etwq3rb416a23h2","quantity": 1}]' href="#">
+              Sign up now
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td><code>data-theme="dark"</code></td>
+          <td>
+            <a class="paddle_button" data-theme="dark" data-items='[{"priceId": "pri_01gsz8ntc6z7npqqp6j4ys0w1w","quantity": 5},{"priceId": "pri_01h1vjfevh5etwq3rb416a23h2","quantity": 1}]' href="#">
+              Sign up now
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>No <code>data-theme</code></td>
+          <td>
+            <a class="paddle_button" data-items='[{"priceId": "pri_01gsz8ntc6z7npqqp6j4ys0w1w","quantity": 5},{"priceId": "pri_01h1vjfevh5etwq3rb416a23h2","quantity": 1}]' href="#">
+              Sign up now
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <h2>Prefilled customer information</h2>
+  <div class="grid">
+    <div>
+      <h3><code>Paddle.Checkout.open()</code></h3>
+      <a href="#" onclick="openCheckout(itemsList, customerInfo)"><b>Sign up now</b></a>
+    </div>
+    <div>
+      <h3>HTML data attributes</h3>
+      <table>
+        <tr>
+          <td><code>data-theme="light"</code></td>
+          <td>
+            <a class="paddle_button" data-theme="light" data-items='[{"priceId": "pri_01gsz8ntc6z7npqqp6j4ys0w1w","quantity": 5},{"priceId": "pri_01h1vjfevh5etwq3rb416a23h2","quantity": 1}]' data-customer-email="sam@example.com" data-customer-address-country-code="US" data-customer-address-postal-code="10021" href="#">
+              Sign up now
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td><code>data-theme="dark"</code></td>
+          <td>
+            <a class="paddle_button" data-theme="dark" data-items='[{"priceId": "pri_01gsz8ntc6z7npqqp6j4ys0w1w","quantity": 5},{"priceId": "pri_01h1vjfevh5etwq3rb416a23h2","quantity": 1}]' data-customer-email="sam@example.com" data-customer-address-country-code="US" data-customer-address-postal-code="10021" href="#">
+              Sign up now
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>No <code>data-theme</code></td>
+          <td>
+            <a class="paddle_button" data-items='[{"priceId": "pri_01gsz8ntc6z7npqqp6j4ys0w1w","quantity": 5},{"priceId": "pri_01h1vjfevh5etwq3rb416a23h2","quantity": 1}]' data-customer-email="sam@example.com" data-customer-address-country-code="US" data-customer-address-postal-code="10021" href="#">
+              Sign up now
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<footer>
+  <hr>
+  <p><small>
+    For the tutorial, check out: 
+    <a href="https://developer.paddle.com/build/checkout/build-overlay-checkout?utm_source=dx&utm_medium=codepen">Build an overlay checkout</a> - 
+    <a href="https://developer.paddle.com/?utm_source=dx&utm_medium=codepen">
+      developer.paddle.com
+    </a>
+    </small></p>
+</footer>

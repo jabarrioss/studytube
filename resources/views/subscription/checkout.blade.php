@@ -97,14 +97,19 @@
     @push('scripts')
         <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
         <script>
+            // Set environment first
+            @if(config('cashier.sandbox'))
+                Paddle.Environment.set('sandbox');
+            @endif
+
             // Initialize Paddle
             @if(config('cashier.client_side_token'))
                 try {
-                    Paddle.Setup({ 
-                        token: '{{ config('cashier.client_side_token') }}'
-                        @if(config('cashier.sandbox'))
-                            , pwCustomer: undefined
-                        @endif
+                    Paddle.Initialize({
+                        token: '{{ config('cashier.client_side_token') }}',
+                        eventCallback: function(data) {
+                            console.log('Paddle event:', data);
+                        }
                     });
                     console.log('Paddle initialized successfully');
                 } catch (error) {
@@ -133,13 +138,10 @@
                             },
                             customData: {
                                 user_id: '{{ $user->id }}'
-                            },
-                            settings: {
-                                successUrl: '{{ route('subscription.success') }}'
                             }
                         });
                         
-                        console.log('Checkout call completed');
+                        console.log('Checkout opened successfully');
                     } catch (error) {
                         console.error('Paddle checkout error:', error);
                         alert('Failed to open checkout: ' + error.message);

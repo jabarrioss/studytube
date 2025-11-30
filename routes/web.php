@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PremiumController;
+use App\Http\Controllers\PricingController;
+use App\Http\Controllers\LegalController;
 use App\Http\Controllers\ShopifyWebhookController;
 use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\Admin\AdminController;
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Pricing Page (Public)
+Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
+
+// Legal Pages (Public)
+Route::get('/terms', [LegalController::class, 'terms'])->name('legal.terms');
+Route::get('/privacy', [LegalController::class, 'privacy'])->name('legal.privacy');
+Route::get('/refund', [LegalController::class, 'refund'])->name('legal.refund');
 
 // Google OAuth Routes
 Route::get('/auth/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('google.login');

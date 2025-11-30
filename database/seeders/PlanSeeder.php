@@ -24,7 +24,7 @@ class PlanSeeder extends Seeder
 
         Plan::create([
             'name' => 'premium',
-            'price' => 9.99,
+            'price' => 5.00,
             'features_json' => [
                 'unlimited_topics' => true,
                 'unlimited_notes' => true,

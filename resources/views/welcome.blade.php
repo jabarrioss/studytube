@@ -60,6 +60,7 @@
                         <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">StudyTube</span>
                     </div>
                     <div class="flex items-center space-x-4">
+                        <a href="{{ route('pricing') }}" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Pricing</a>
                         @auth
                             <a href="{{ url('/dashboard') }}" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Dashboard</a>
                         @else
@@ -225,7 +226,7 @@
                         <ul class="space-y-2 text-sm">
                             <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
                             <li><a href="#" class="hover:text-white transition">Features</a></li>
-                            <li><a href="#" class="hover:text-white transition">Pricing</a></li>
+                            <li><a href="{{ route('pricing') }}" class="hover:text-white transition">Pricing</a></li>
                         </ul>
                     </div>
                     <div>
@@ -239,8 +240,9 @@
                     <div>
                         <h4 class="font-semibold text-white mb-4">Legal</h4>
                         <ul class="space-y-2 text-sm">
-                            <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                            <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="{{ route('legal.privacy') }}" class="hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="{{ route('legal.terms') }}" class="hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="{{ route('legal.refund') }}" class="hover:text-white transition">Refund Policy</a></li>
                         </ul>
                     </div>
                 </div>

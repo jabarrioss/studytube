@@ -95,12 +95,33 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if the user is subscribed to a specific plan.
+     * Check if the user has an active premium subscription via Paddle.
+     * 
+     * @return bool
+     */
+    public function isPremium(): bool
+    {
+        // Check Paddle subscription first (new system)
+        if ($this->subscribed('default')) {
+            return true;
+        }
+        
+        // Fallback to old plan_id system (for legacy users)
+        if ($this->plan && strtolower($this->plan->name) === 'premium') {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Legacy method for backwards compatibility.
+     * Use isPremium() for new code.
      *
      * @param string $planName
      * @return bool
      */
-    public function subscribed(string $planName): bool
+    public function subscribedToLegacyPlan(string $planName): bool
     {
         if (!$this->plan) {
             return false;

@@ -57,7 +57,7 @@
                                     </div>
                                 @endif
 
-                                @if($subscription->cancelled())
+                                @if($subscription->ends_at)
                                     <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-3">
                                         <p class="text-sm text-yellow-800 dark:text-yellow-300">
                                             <strong>Ends:</strong> {{ $subscription->ends_at->format('M d, Y') }}
@@ -69,7 +69,7 @@
                                 @else
                                     <div class="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-3">
                                         <p class="text-sm text-gray-700 dark:text-gray-300">
-                                            <strong>Next billing date:</strong> {{ optional($subscription->nextPayment())->date()?->format('M d, Y') ?? 'N/A' }}
+                                            <strong>Status:</strong> Active and recurring
                                         </p>
                                     </div>
                                 @endif
@@ -99,20 +99,13 @@
 
                         @if($subscription && $subscription->active())
                             <div class="space-y-3">
-                                @if($subscription->cancelled())
-                                    <form method="POST" action="{{ route('subscription.resume') }}">
-                                        @csrf
-                                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition shadow-md">
-                                            Resume Subscription
-                                        </button>
-                                    </form>
+                                @if($subscription->ends_at)
+                                    <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-3">
+                                        <p class="text-sm text-yellow-800 dark:text-yellow-300">
+                                            Your subscription is set to expire on {{ $subscription->ends_at->format('M d, Y') }}. You can resubscribe anytime after it expires.
+                                        </p>
+                                    </div>
                                 @else
-                                    <button 
-                                        onclick="paddle.Checkout.open({ override: '{{ $user->chargeProduct(config('cashier.price_ids.premium')) }}' })"
-                                        class="w-full bg-indigo-600 dark:bg-indigo-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 dark:hover:bg-indigo-600 transition shadow-md">
-                                        Update Payment Method
-                                    </button>
-
                                     <form method="POST" action="{{ route('subscription.cancel') }}" 
                                           onsubmit="return confirm('Are you sure you want to cancel your subscription? You will retain access until the end of your billing period.');">
                                         @csrf

@@ -12,10 +12,25 @@ class SubscriptionController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $subscription = $user->subscription('default');
+        
+        // Get subscription details if active
+        $subscriptionDetails = null;
+        if ($subscription) {
+            $subscriptionDetails = [
+                'status' => $subscription->status,
+                'paddle_id' => $subscription->paddle_id,
+                'is_active' => $subscription->active(),
+                'ends_at' => $subscription->ends_at,
+                'paused_at' => $subscription->paused_at,
+                'on_trial' => $subscription->onTrial(),
+            ];
+        }
         
         return view('subscription.index', [
             'user' => $user,
-            'subscription' => $user->subscription('default'),
+            'subscription' => $subscription,
+            'subscriptionDetails' => $subscriptionDetails,
         ]);
     }
 
@@ -52,17 +67,6 @@ class SubscriptionController extends Controller
 
         return redirect()->route('subscription.index')
             ->with('success', 'Your subscription has been cancelled. You will retain access until the end of your billing period.');
-    }
-
-    /**
-     * Resume the subscription.
-     */
-    public function resume(Request $request)
-    {
-        $request->user()->subscription('default')->resume();
-
-        return redirect()->route('subscription.index')
-            ->with('success', 'Your subscription has been resumed!');
     }
 
     /**

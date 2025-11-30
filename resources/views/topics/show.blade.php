@@ -31,7 +31,7 @@
                         <div id="youtube-player" class="w-full aspect-video bg-black"></div>
 
                         <!-- Ad Placeholder for Free Plan Users -->
-                        @if(!Auth::user()->isAdmin() && !Auth::user()->subscribed('premium') && !Auth::user()->isPana())
+                        @if(!Auth::user()->isAdmin() && !Auth::user()->isPremium() && !Auth::user()->isPana())
                             <div class="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 border-y border-gray-300 dark:border-gray-600">
                                 <div class="p-6 text-center">
                                     <div class="flex items-center justify-center mb-3">

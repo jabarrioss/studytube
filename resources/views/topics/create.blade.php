@@ -22,7 +22,7 @@
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Add a YouTube Video</h3>
                         <p class="text-gray-600 dark:text-gray-400">Start your learning journey by adding any YouTube video</p>
-                        @if(!Auth::user()->isAdmin() && !Auth::user()->isPana() && !Auth::user()->subscribed('premium'))
+                        @if(!Auth::user()->isAdmin() && !Auth::user()->isPana() && !Auth::user()->isPremium())
                             @php
                                 $topicCount = \App\Models\Tenant\Topic::count();
                             @endphp

@@ -11,6 +11,7 @@ use App\Http\Controllers\ShopifyWebhookController;
 use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PaymentProviderController;
+use Laravel\Paddle\Http\Controllers\WebhookController as PaddleWebhookController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,8 +33,8 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleC
 // Shopify Webhook (no auth middleware)
 Route::post('/webhooks/shopify', [ShopifyWebhookController::class, 'handle'])->name('shopify.webhook');
 
-// Paddle Webhook (no CSRF protection)
-Route::post('/webhooks/paddle', [SubscriptionController::class, 'webhook'])->middleware('api')->name('paddle.webhook');
+// Paddle Webhook (handled by Cashier)
+Route::post('/webhooks/paddle', PaddleWebhookController::class)->name('paddle.webhook');
 
 // Authenticated Routes
 Route::middleware('auth')->group(function () {

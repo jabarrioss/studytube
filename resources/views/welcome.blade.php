@@ -163,8 +163,8 @@
                     <!-- Feature 6 -->
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
                         <div class="text-4xl mb-4">☁️</div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Cloud Sync</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Access your notes from any device, anywhere, anytime.</p>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Secure Cloud Storage</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Your notes are safely stored in the cloud. Never lose them even if you lose access to your computer.</p>
                     </div>
                 </div>
             </div>

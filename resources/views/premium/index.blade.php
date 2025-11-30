@@ -21,7 +21,7 @@
                     <div class="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl p-8 mb-8 border border-indigo-200 dark:border-indigo-800">
                         <div class="text-center mb-8">
                             <div class="inline-flex items-baseline">
-                                <span class="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">$9.99</span>
+                                <span class="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">$5.00</span>
                                 <span class="text-xl text-gray-600 dark:text-gray-400 ml-2">/month</span>
                             </div>
                         </div>
@@ -101,17 +101,42 @@
 
                     <!-- CTA Button -->
                     <div class="text-center">
-                        <a href="{{ $checkoutUrl }}" 
-                           target="_blank"
-                           class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 border border-transparent rounded-lg font-semibold text-lg text-white hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition shadow-lg hover:shadow-xl">
-                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Subscribe Now
-                        </a>
-                        <p class="mt-4 text-sm text-gray-500 dark:text-gray-400">
-                            Secure payment processed by Shopify
-                        </p>
+                        @auth
+                            @if(auth()->user()->subscribed('default'))
+                                <a href="{{ route('subscription.index') }}" 
+                                   class="inline-flex items-center px-8 py-4 bg-green-600 border border-transparent rounded-lg font-semibold text-lg text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition shadow-lg hover:shadow-xl">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    You're Already Premium!
+                                </a>
+                                <p class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                                    Manage your subscription
+                                </p>
+                            @else
+                                <form method="POST" action="{{ route('subscription.checkout') }}">
+                                    @csrf
+                                    <button type="submit" 
+                                            class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 border border-transparent rounded-lg font-semibold text-lg text-white hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition shadow-lg hover:shadow-xl">
+                                        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        Subscribe Now - $5/month
+                                    </button>
+                                </form>
+                                <p class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                                    Secure payment processed by Paddle • Cancel anytime
+                                </p>
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}" 
+                               class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 border border-transparent rounded-lg font-semibold text-lg text-white hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition shadow-lg hover:shadow-xl">
+                                Get Started with Premium
+                            </a>
+                            <p class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                                Sign in to subscribe • Secure payment by Paddle
+                            </p>
+                        @endauth
                     </div>
                 </div>
             </div>

@@ -190,6 +190,17 @@ console.log(typeof Paddle); // Should output 'object'
 3. Run `php artisan config:clear` and `php artisan config:cache`
 4. Verify API key has necessary permissions
 
+### Issue: 403 Forbidden when opening checkout
+**Solutions**:
+1. Verify Price ID exists in Paddle dashboard
+2. Ensure Price ID matches the environment (sandbox/production):
+   - Sandbox token (`test_xxx`) → Use sandbox Price ID
+   - Production token (`live_xxx`) → Use production Price ID
+3. Check that Price ID is active (not archived or deleted)
+4. Verify Client Token has access to the product
+5. In Paddle Dashboard → Catalog → Products → Click your product → Copy the correct Price ID
+6. Update `PADDLE_PREMIUM_PRICE_ID` in `.env` and run `php artisan config:clear`
+
 ## Testing Checklist
 
 Before going live, test these scenarios:

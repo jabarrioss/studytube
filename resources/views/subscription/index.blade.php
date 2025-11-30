@@ -14,6 +14,13 @@
                 </div>
             @endif
 
+            <!-- Error Message -->
+            @if (session('error'))
+                <div class="mb-6 bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-700 text-red-700 dark:text-red-300 px-4 py-3 rounded relative" role="alert">
+                    <span class="block sm:inline">{{ session('error') }}</span>
+                </div>
+            @endif
+
             <div class="grid md:grid-cols-2 gap-6">
                 <!-- Current Plan Card -->
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-xl border border-gray-200 dark:border-gray-700">

@@ -24,12 +24,15 @@ class SubscriptionController extends Controller
      */
     public function checkout(Request $request)
     {
-        $request->user()
-            ->newSubscription('default', config('cashier.price_ids.premium'))
-            ->returnTo(route('subscription.success'))
-            ->create();
+        // Verify Paddle configuration
+        if (empty(config('cashier.client_side_token')) || empty(config('cashier.price_ids.premium'))) {
+            return redirect()->route('subscription.index')
+                ->with('error', 'Paddle is not configured. Please contact support.');
+        }
 
-        return redirect()->route('subscription.index');
+        return view('subscription.checkout', [
+            'user' => $request->user()
+        ]);
     }
 
     /**

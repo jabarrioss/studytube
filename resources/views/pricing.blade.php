@@ -100,7 +100,7 @@
                                 Get Started Free
                             </a>
                         @else
-                            @if(auth()->user()->plan->name === 'free')
+                            @if(!auth()->user()->subscribed('default'))
                                 <button disabled class="block w-full bg-gray-400 text-white text-center py-3 rounded-lg font-semibold cursor-not-allowed">
                                     Current Plan
                                 </button>
@@ -173,14 +173,17 @@
                                 Start Free Trial
                             </a>
                         @else
-                            @if(auth()->user()->plan->name === 'premium')
-                                <button disabled class="block w-full bg-white/20 text-white text-center py-3 rounded-lg font-semibold cursor-not-allowed">
-                                    Current Plan ✓
-                                </button>
-                            @else
-                                <a href="{{ route('premium.index') }}" class="block w-full bg-white text-indigo-600 text-center py-3 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg">
-                                    Upgrade to Premium
+                            @if(auth()->user()->subscribed('default'))
+                                <a href="{{ route('subscription.index') }}" class="block w-full bg-white/20 text-white text-center py-3 rounded-lg font-semibold cursor-pointer hover:bg-white/30 transition">
+                                    Manage Subscription ✓
                                 </a>
+                            @else
+                                <form method="POST" action="{{ route('subscription.checkout') }}">
+                                    @csrf
+                                    <button type="submit" class="block w-full bg-white text-indigo-600 text-center py-3 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg">
+                                        Upgrade to Premium
+                                    </button>
+                                </form>
                             @endif
                         @endguest
                     </div>

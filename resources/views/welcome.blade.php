@@ -139,20 +139,6 @@
                         <p class="text-gray-600 dark:text-gray-400">Click any note to jump directly to that timestamp in the video.</p>
                     </div>
 
-                    <!-- Feature 3 -->
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
-                        <div class="text-4xl mb-4">📁</div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Organize by Topics</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Group related videos into topics for structured learning paths.</p>
-                    </div>
-
-                    <!-- Feature 4 -->
-                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
-                        <div class="text-4xl mb-4">🔍</div>
-                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Search Everything</h3>
-                        <p class="text-gray-600 dark:text-gray-400">Find any note across all your videos instantly with powerful search.</p>
-                    </div>
-
                     <!-- Feature 5 -->
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
                         <div class="text-4xl mb-4">🎨</div>

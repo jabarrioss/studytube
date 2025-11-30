@@ -74,7 +74,7 @@
         <!-- Hero Section -->
         <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto text-center">
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight text-gray-900 dark:text-gray-100">
                     Learn Smarter from
                     <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">YouTube Videos</span>
                 </h1>
@@ -95,23 +95,23 @@
         <!-- How It Works -->
         <section id="how-it-works" class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800">
             <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-gray-100">
                     Simple. <span class="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Powerful.</span> Effective.
                 </h2>
                 <div class="grid md:grid-cols-3 gap-12">
                     <div class="text-center">
                         <div class="bg-gradient-to-br from-indigo-500 to-purple-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-                        <h3 class="text-xl font-semibold mb-3">Paste YouTube Link</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Paste YouTube Link</h3>
                         <p class="text-gray-600 dark:text-gray-400">Add any YouTube video URL to create your video topic.</p>
                     </div>
                     <div class="text-center">
                         <div class="bg-gradient-to-br from-indigo-500 to-purple-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-                        <h3 class="text-xl font-semibold mb-3">Take Timestamped Notes</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Take Timestamped Notes</h3>
                         <p class="text-gray-600 dark:text-gray-400">Write notes linked to specific timestamps as you watch.</p>
                     </div>
                     <div class="text-center">
                         <div class="bg-gradient-to-br from-indigo-500 to-purple-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-                        <h3 class="text-xl font-semibold mb-3">Jump to Any Moment</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Jump to Any Moment</h3>
                         <p class="text-gray-600 dark:text-gray-400">Click your notes to instantly jump to that timestamp in the video.</p>
                     </div>
                 </div>
@@ -121,49 +121,49 @@
         <!-- Features Grid -->
         <section class="py-20 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-gray-100">
                     Everything You Need to Learn Better
                 </h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Feature 1 -->
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
                         <div class="text-4xl mb-4">⏱️</div>
-                        <h3 class="text-xl font-semibold mb-3">Precise Timestamps</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Precise Timestamps</h3>
                         <p class="text-gray-600 dark:text-gray-400">Every note captures the exact moment in the video for perfect reference.</p>
                     </div>
 
                     <!-- Feature 2 -->
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
                         <div class="text-4xl mb-4">🎯</div>
-                        <h3 class="text-xl font-semibold mb-3">Instant Navigation</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Instant Navigation</h3>
                         <p class="text-gray-600 dark:text-gray-400">Click any note to jump directly to that timestamp in the video.</p>
                     </div>
 
                     <!-- Feature 3 -->
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
                         <div class="text-4xl mb-4">📁</div>
-                        <h3 class="text-xl font-semibold mb-3">Organize by Topics</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Organize by Topics</h3>
                         <p class="text-gray-600 dark:text-gray-400">Group related videos into topics for structured learning paths.</p>
                     </div>
 
                     <!-- Feature 4 -->
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
                         <div class="text-4xl mb-4">🔍</div>
-                        <h3 class="text-xl font-semibold mb-3">Search Everything</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Search Everything</h3>
                         <p class="text-gray-600 dark:text-gray-400">Find any note across all your videos instantly with powerful search.</p>
                     </div>
 
                     <!-- Feature 5 -->
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
                         <div class="text-4xl mb-4">🎨</div>
-                        <h3 class="text-xl font-semibold mb-3">Rich Text Editing</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Rich Text Editing</h3>
                         <p class="text-gray-600 dark:text-gray-400">Format notes with markdown, code blocks, and formatting options.</p>
                     </div>
 
                     <!-- Feature 6 -->
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
                         <div class="text-4xl mb-4">☁️</div>
-                        <h3 class="text-xl font-semibold mb-3">Cloud Sync</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Cloud Sync</h3>
                         <p class="text-gray-600 dark:text-gray-400">Access your notes from any device, anywhere, anytime.</p>
                     </div>
                 </div>
@@ -173,35 +173,35 @@
         <!-- Use Cases -->
         <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-800">
             <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-gray-100">
                     Perfect For Every Learner
                 </h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Use Case 1 -->
                     <div class="text-center">
                         <div class="text-6xl mb-4">🎓</div>
-                        <h3 class="text-xl font-semibold mb-3">Students</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Students</h3>
                         <p class="text-gray-600 dark:text-gray-400">Master course materials and exam prep videos with organized, timestamped notes.</p>
                     </div>
 
                     <!-- Use Case 2 -->
                     <div class="text-center">
                         <div class="text-6xl mb-4">💼</div>
-                        <h3 class="text-xl font-semibold mb-3">Professionals</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Professionals</h3>
                         <p class="text-gray-600 dark:text-gray-400">Level up your skills with technical tutorials and conference talks.</p>
                     </div>
 
                     <!-- Use Case 3 -->
                     <div class="text-center">
                         <div class="text-6xl mb-4">🎬</div>
-                        <h3 class="text-xl font-semibold mb-3">Content Creators</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Content Creators</h3>
                         <p class="text-gray-600 dark:text-gray-400">Research and take notes from competitor content and inspiration.</p>
                     </div>
 
                     <!-- Use Case 4 -->
                     <div class="text-center">
                         <div class="text-6xl mb-4">📚</div>
-                        <h3 class="text-xl font-semibold mb-3">Lifelong Learners</h3>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">Lifelong Learners</h3>
                         <p class="text-gray-600 dark:text-gray-400">Build your knowledge base from documentaries and educational content.</p>
                     </div>
                 </div>

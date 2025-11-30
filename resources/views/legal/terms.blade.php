@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Terms of Service - StudyTube</title>
-        <meta name="description" content="Terms of Service for StudyTube - Learn smarter with timestamped YouTube notes.">
+        <title>Terms of Service - Study Tube</title>
+        <meta name="description" content="Terms of Service for Study Tube - Learn smarter with timestamped YouTube notes.">
         
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -20,7 +20,7 @@
                 <div class="flex justify-between items-center h-16">
                     <a href="{{ url('/') }}" class="flex items-center space-x-2">
                         <span class="text-2xl">📚</span>
-                        <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">StudyTube</span>
+                        <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Study Tube</span>
                     </a>
                     <div class="flex items-center space-x-4">
                         <a href="{{ url('/') }}" class="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
@@ -49,14 +49,14 @@
                         <section class="mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">1. Acceptance of Terms</h2>
                             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                By accessing and using StudyTube ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these Terms of Service, please do not use the Service.
+                                By accessing and using Study Tube ("the Service"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to these Terms of Service, please do not use the Service.
                             </p>
                         </section>
 
                         <section class="mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">2. Description of Service</h2>
                             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                StudyTube provides a platform for users to take timestamped notes on YouTube videos. The Service allows users to organize learning content, create notes linked to specific video timestamps, and access their notes from any device.
+                                Study Tube provides a platform for users to take timestamped notes on YouTube videos. The Service allows users to organize learning content, create notes linked to specific video timestamps, and access their notes from any device.
                             </p>
                         </section>
 
@@ -106,7 +106,7 @@
                         <section class="mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">6. Premium Subscription</h2>
                             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                StudyTube offers a Premium subscription plan with additional features. By subscribing to Premium:
+                                Study Tube offers a Premium subscription plan with additional features. By subscribing to Premium:
                             </p>
                             <ul class="list-disc pl-6 text-gray-700 dark:text-gray-300 space-y-2 mb-4">
                                 <li>You agree to pay the subscription fee as stated on our pricing page</li>
@@ -119,7 +119,7 @@
                         <section class="mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">7. Intellectual Property</h2>
                             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                The Service and its original content (excluding User Content), features, and functionality are owned by StudyTube and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
+                                The Service and its original content (excluding User Content), features, and functionality are owned by Study Tube and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
                             </p>
                         </section>
 
@@ -140,7 +140,7 @@
                         <section class="mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">10. Limitation of Liability</h2>
                             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                TO THE MAXIMUM EXTENT PERMITTED BY LAW, STUDYTUBE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY, OR ANY LOSS OF DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES.
+                                TO THE MAXIMUM EXTENT PERMITTED BY LAW, Study Tube SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY, OR ANY LOSS OF DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES.
                             </p>
                         </section>
 
@@ -161,14 +161,14 @@
                         <section class="mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">13. Governing Law</h2>
                             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which StudyTube operates, without regard to its conflict of law provisions.
+                                These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Study Tube operates, without regard to its conflict of law provisions.
                             </p>
                         </section>
 
                         <section class="mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">14. Contact Us</h2>
                             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                If you have any questions about these Terms, please contact us through our website or email us at support@studytube.com.
+                                If you have any questions about these Terms, please contact us through our website or email us at support@Study Tube.com.
                             </p>
                         </section>
                     </div>
@@ -181,7 +181,7 @@
             <div class="max-w-7xl mx-auto text-center">
                 <div class="flex items-center justify-center space-x-2 mb-4">
                     <span class="text-2xl">📚</span>
-                    <span class="text-xl font-bold text-white">StudyTube</span>
+                    <span class="text-xl font-bold text-white">Study Tube</span>
                 </div>
                 <div class="flex justify-center space-x-6 text-sm mb-4">
                     <a href="{{ url('/') }}" class="hover:text-white transition">Home</a>
@@ -190,7 +190,7 @@
                     <a href="{{ route('legal.terms') }}" class="hover:text-white transition">Terms of Service</a>
                     <a href="{{ route('legal.refund') }}" class="hover:text-white transition">Refund Policy</a>
                 </div>
-                <p class="text-sm">&copy; {{ date('Y') }} StudyTube. All rights reserved.</p>
+                <p class="text-sm">&copy; {{ date('Y') }} Study Tube. All rights reserved.</p>
             </div>
         </footer>
     </body>

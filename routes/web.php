@@ -6,6 +6,7 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PremiumController;
 use App\Http\Controllers\PricingController;
 use App\Http\Controllers\LegalController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ShopifyWebhookController;
 use App\Http\Controllers\Auth\GoogleAuthController;
 use App\Http\Controllers\Admin\AdminController;
@@ -31,6 +32,9 @@ Route::get('/auth/google/callback', [GoogleAuthController::class, 'handleGoogleC
 // Shopify Webhook (no auth middleware)
 Route::post('/webhooks/shopify', [ShopifyWebhookController::class, 'handle'])->name('shopify.webhook');
 
+// Paddle Webhook (no CSRF protection)
+Route::post('/webhooks/paddle', [SubscriptionController::class, 'webhook'])->middleware('api')->name('paddle.webhook');
+
 // Authenticated Routes
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
@@ -52,6 +56,13 @@ Route::middleware('auth')->group(function () {
 
     // Premium Subscription
     Route::get('/premium', [PremiumController::class, 'index'])->name('premium.index');
+
+    // Subscription Management (Paddle)
+    Route::get('/subscription', [SubscriptionController::class, 'index'])->name('subscription.index');
+    Route::post('/subscription/checkout', [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
+    Route::get('/subscription/success', [SubscriptionController::class, 'success'])->name('subscription.success');
+    Route::post('/subscription/cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
+    Route::post('/subscription/resume', [SubscriptionController::class, 'resume'])->name('subscription.resume');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

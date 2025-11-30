@@ -6,6 +6,8 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PremiumController;
 use App\Http\Controllers\ShopifyWebhookController;
 use App\Http\Controllers\Auth\GoogleAuthController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PaymentProviderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,6 +47,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Admin Routes (Only for admins)
+Route::middleware(['auth', App\Http\Middleware\EnsureUserIsAdmin::class])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+    
+    // Users Management
+    Route::get('/users', [AdminController::class, 'users'])->name('users.index');
+    Route::get('/users/{user}', [AdminController::class, 'showUser'])->name('users.show');
+    Route::get('/users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
+    Route::patch('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
+    Route::delete('/users/{user}', [AdminController::class, 'destroyUser'])->name('users.destroy');
+    
+    // Payment Providers Management
+    Route::get('/payment-providers', [PaymentProviderController::class, 'index'])->name('payment-providers.index');
+    Route::get('/payment-providers/create', [PaymentProviderController::class, 'create'])->name('payment-providers.create');
+    Route::post('/payment-providers', [PaymentProviderController::class, 'store'])->name('payment-providers.store');
+    Route::get('/payment-providers/{paymentProvider}/edit', [PaymentProviderController::class, 'edit'])->name('payment-providers.edit');
+    Route::patch('/payment-providers/{paymentProvider}', [PaymentProviderController::class, 'update'])->name('payment-providers.update');
+    Route::delete('/payment-providers/{paymentProvider}', [PaymentProviderController::class, 'destroy'])->name('payment-providers.destroy');
 });
 
 require __DIR__.'/auth.php';

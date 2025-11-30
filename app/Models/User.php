@@ -26,6 +26,7 @@ class User extends Authenticatable
         'password',
         'google_id',
         'is_admin',
+        'is_pana',
         'plan_id',
     ];
 
@@ -50,6 +51,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_admin' => 'boolean',
+            'is_pana' => 'boolean',
         ];
     }
 
@@ -120,5 +122,14 @@ class User extends Authenticatable
     public function isPana(): bool
     {
         return $this->is_pana;
+    }
+
+    /**
+     * Check if the user can access the admin panel.
+     * Used for Filament or custom admin panels.
+     */
+    public function canAccessPanel($panel = null): bool
+    {
+        return $this->isAdmin();
     }
 }

@@ -8,6 +8,7 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <!-- Google OAuth - Priority -->
+    {{--
     <div class="mb-6">
         <a href="{{ route('google.login') }}" class="w-full inline-flex justify-center items-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -19,7 +20,7 @@
             <span class="ml-3">Continue with Google</span>
         </a>
     </div>
-
+    --}}
     <div class="relative my-6">
         <div class="absolute inset-0 flex items-center">
             <div class="w-full border-t border-gray-300"></div>
